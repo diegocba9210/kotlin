@@ -1334,8 +1334,17 @@ class RawFirBuilder(
         }
 
         override fun visitTypeReference(typeReference: KtTypeReference, data: Unit): FirElement {
-            val typeElement = typeReference.typeElement
-            val source = typeReference.toFirSourceElement()
+            var typeElement = typeReference.typeElement
+            var source = typeReference.toFirSourceElement()
+
+            if (typeElement is KtUserType && typeElement.referenceExpression == null) {
+                val fallBackQualifier = typeElement.qualifier as? KtUserType
+                if (fallBackQualifier != null) {
+                    typeElement = fallBackQualifier
+                    source = fallBackQualifier.toFirSourceElement()
+                }
+            }
+
             val isNullable = typeElement is KtNullableType
 
             fun KtTypeElement?.unwrapNullable(): KtTypeElement? =
