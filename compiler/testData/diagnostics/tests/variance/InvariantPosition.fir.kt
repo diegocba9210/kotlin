@@ -42,6 +42,6 @@ interface Test<in I, out O, P> {
     var neOk31: Pair<I, Inv>
     var neOk32: Inv
     var neOk33: Inv<<!SYNTAX!><!>>
-    var neOk34: <!UNRESOLVED_REFERENCE!>Inv<C><!>
+    var neOk34: Inv<<!UNRESOLVED_REFERENCE!>C<!>>
     var neOk35: <!WRONG_NUMBER_OF_TYPE_ARGUMENTS!>Inv<P, P><!>
 }

@@ -23,7 +23,7 @@ fun <TF> foo() {
 
     fun <TLF> localfun() =
             object {
-                typealias LTF = <!UNRESOLVED_REFERENCE!>List<TF><!>
-                typealias LTLF = <!UNRESOLVED_REFERENCE!>List<TLF><!>
+                typealias LTF = List<<!UNRESOLVED_REFERENCE!>TF<!>>
+                typealias LTLF = List<<!UNRESOLVED_REFERENCE!>TLF<!>>
             }
 }

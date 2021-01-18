@@ -1338,7 +1338,7 @@ class RawFirBuilder(
             var source = typeReference.toFirSourceElement()
 
             if (typeElement is KtUserType && typeElement.referenceExpression == null) {
-                val fallBackQualifier = typeElement.qualifier as? KtUserType
+                val fallBackQualifier = typeElement.qualifier
                 if (fallBackQualifier != null) {
                     typeElement = fallBackQualifier
                     source = fallBackQualifier.toFirSourceElement()
